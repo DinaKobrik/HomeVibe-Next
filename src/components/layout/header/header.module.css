@@ -1,0 +1,214 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--green-dark);
+  color: var(--color-white);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+  border-radius: 0 0 var(--border-l) var(--border-l);
+}
+
+.container {
+  display: flex;
+  max-width: 1520px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: row;
+}
+
+.logoTextBold {
+  font-weight: 700;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.logoIcon svg {
+  fill: var(--color-white);
+}
+
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cartButton {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  color: var(--color-white);
+}
+.cartButton svg {
+  transition: fill 0.2s ease;
+  fill: var(--color-white);
+}
+
+.cartButton:hover svg {
+  fill: var(--primary);
+}
+
+.cartBadge {
+  position: absolute;
+  top: 2px;
+  right: -2px;
+  min-width: 18px;
+  height: 18px;
+  background-color: var(--primary);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-white);
+  width: 40px;
+  height: 40px;
+}
+
+.menuButton svg {
+  fill: var(--color-white);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+}
+
+.navLink {
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 1200px) {
+  .nav {
+    gap: 40px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    height: 60px;
+    padding: 0px 30px;
+  }
+  .logoIcon,
+  .cartButton,
+  .menuButton {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logoText {
+    flex-direction: column;
+    gap: 0;
+    font-size: 16px;
+    line-height: 0.9;
+  }
+
+  .nav {
+    display: none;
+  }
+  .navOpen {
+    display: flex;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 50%;
+    min-width: 260px;
+    flex-direction: column;
+    gap: 0px;
+    background: var(--color-white);
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+    z-index: 40;
+    border-radius: 0 0 var(--border-l) var(--border-l);
+  }
+
+  .navOpen {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navLink {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-black);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .navLink:last-child {
+    border-bottom: none;
+  }
+
+  .navLink:hover {
+    color: var(--primary);
+  }
+
+  .menuButton {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+  .navOpen {
+    padding: 16px;
+  }
+
+  .cartBadge {
+    min-width: 16px;
+    height: 16px;
+    font-size: 11px;
+  }
+}

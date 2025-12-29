@@ -5,10 +5,15 @@
   --bg-white: #fafcf5;
   --color-black: #3d3d3d;
   --green-dark: #6b705c;
+  --color-border: #cecece;
   --border-s: 16px;
   --border-l: 48px;
 }
-
+@media (max-width: 992px) {
+  :root {
+    --border-l: 24px;
+  }
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -22,8 +27,9 @@ body {
   overflow-x: hidden;
 }
 main {
-  max-width: 1440px;
+  max-width: 1520px;
   margin: 0 auto;
+  padding: 0 40px;
 }
 body {
   color: var(--color-black);

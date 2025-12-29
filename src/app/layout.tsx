@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/layout";
+import styles from "./layout.module.css";
 
 const geistMonts = Montserrat({
   subsets: ["latin"],
@@ -23,7 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistMonts} ${geistInter}`}>{children}</body>
+      <body className={`${geistMonts} ${geistInter}`}>
+        <Header />
+        <main className={styles.main}>{children}</main>
+      </body>
     </html>
   );
 }
