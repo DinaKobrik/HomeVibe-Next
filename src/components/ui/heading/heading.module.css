@@ -1,0 +1,25 @@
+.base {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.h1 {
+  font-size: 64px;
+}
+
+.h2 {
+  font-size: 40px;
+}
+
+.h3 {
+  font-size: 36px;
+}
+
+.black {
+  color: var(--color-black);
+}
+
+.white {
+  color: var(--color-white);
+}
