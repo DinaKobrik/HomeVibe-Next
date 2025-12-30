@@ -1,0 +1,20 @@
+.badge {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.black {
+  color: var(--color-black);
+}
+
+.white {
+  color: var(--color-white);
+}
+@media (max-width: 576px) {
+  .badge {
+    font-size: 14px;
+  }
+}
