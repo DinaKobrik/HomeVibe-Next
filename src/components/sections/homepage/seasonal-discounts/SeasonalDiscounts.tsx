@@ -29,15 +29,13 @@ const cardsData = [
 export const SeasonalDiscounts: React.FC = () => {
   return (
     <section className={styles.section}>
-      <div className={styles.container}>
-        <h3 className={styles.title}>
-          Place seasonal & targeted discount benefits here
-        </h3>
-        <div className={styles.cards}>
-          {cardsData.map((card, index) => (
-            <DiscountCard key={index} {...card} />
-          ))}
-        </div>
+      <h3 className={styles.title}>
+        Place seasonal & targeted discount benefits here
+      </h3>
+      <div className={styles.cards}>
+        {cardsData.map((card, index) => (
+          <DiscountCard key={index} {...card} />
+        ))}
       </div>
     </section>
   );
