@@ -11,7 +11,8 @@
 }
 @media (max-width: 992px) {
   :root {
-    --border-l: 24px;
+    --border-l: 32px;
+    --border-s: 12px;
   }
 }
 @media (prefers-color-scheme: dark) {

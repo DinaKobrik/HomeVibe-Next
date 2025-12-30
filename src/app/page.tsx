@@ -1,10 +1,11 @@
 import { Button, Heading, P } from "@/components/ui";
-import { HeroBanner } from "@/components/sections/homepage";
+import { HeroBanner, SeasonalDiscounts } from "@/components/sections/homepage";
 
 export default async function HomePage() {
   return (
     <>
       <HeroBanner />
+      <SeasonalDiscounts />
       <Heading level="h1">The Beauty Of Design</Heading>
       <Heading level="h2" color="white">
         The Beauty Of Design
