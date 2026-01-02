@@ -4,6 +4,7 @@ import {
   Partners,
   PromoBanner,
   Advantages,
+  QuickAddCart,
 } from "@/components/sections/homepage";
 
 export default async function HomePage() {
@@ -14,6 +15,7 @@ export default async function HomePage() {
       <Partners />
       <PromoBanner />
       <Advantages />
+      <QuickAddCart />
     </>
   );
 }
