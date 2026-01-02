@@ -3,6 +3,7 @@ import {
   HeroBanner,
   SeasonalDiscounts,
   Partners,
+  PromoBanner,
 } from "@/components/sections/homepage";
 
 export default async function HomePage() {
@@ -11,6 +12,7 @@ export default async function HomePage() {
       <HeroBanner />
       <SeasonalDiscounts />
       <Partners />
+      <PromoBanner />
       <Heading level="h1">The Beauty Of Design</Heading>
       <Heading level="h2" color="white">
         The Beauty Of Design
