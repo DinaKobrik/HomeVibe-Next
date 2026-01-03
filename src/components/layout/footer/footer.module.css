@@ -1,0 +1,152 @@
+.footer {
+  background-color: var(--green-dark);
+  border-radius: var(--border-l) var(--border-l) 0 0;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  max-width: 1440px;
+  padding: 24px 40px;
+  margin: 0 auto;
+  color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "logo logo logo logo" "adress catalog quickMenu contacts";
+  column-gap: 60px;
+  row-gap: 30px;
+  align-items: start;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.address {
+  grid-area: adress;
+  font-style: normal;
+  line-height: 2;
+  opacity: 0.6;
+  font-size: 16px;
+}
+
+.catalog {
+  grid-area: catalog;
+}
+
+.contacts {
+  grid-area: contacts;
+}
+
+.quickMenu {
+  grid-area: quickMenu;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subtitle {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0.6;
+}
+
+.list a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.list a:hover {
+  color: var(--primary);
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0.6;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contactList a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.contactList a:hover {
+  color: var(--primary);
+}
+
+.decoration {
+  position: absolute;
+  left: -60px;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+@media (max-width: 1560px) {
+  .decoration {
+    left: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 70px auto;
+    grid-template-areas: "catalog quickMenu" "logo contacts" "adress contacts";
+    column-gap: 48px;
+    row-gap: 0;
+  }
+
+  .catalog {
+    margin-bottom: 48px;
+  }
+
+  .decoration {
+    width: 240px;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+    grid-template-areas: "catalog" "quickMenu" "contacts" "adress" "logo";
+    grid-template-rows: repeat(5, auto);
+    padding-bottom: 110px;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .catalog {
+    margin-bottom: 0;
+  }
+
+  .decoration {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

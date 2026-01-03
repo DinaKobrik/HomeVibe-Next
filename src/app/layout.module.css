@@ -1,5 +1,6 @@
 .main {
   padding-top: 120px;
+  padding-bottom: 80px;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -9,5 +10,6 @@
   .main {
     padding-top: 80px;
     gap: 60px;
+    padding-bottom: 60px;
   }
 }

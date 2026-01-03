@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout";
+import { Header, Footer } from "@/components/layout";
 import styles from "./layout.module.css";
 
 const geistMonts = Montserrat({
@@ -28,6 +28,7 @@ export default function RootLayout({
       <body className={`${geistMonts} ${geistInter}`}>
         <Header />
         <main className={styles.main}>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 import Link from "next/link";
 import { MenuIcon } from "./menu";
 import { CartIcon } from "./cart";
-import { LogoIcon } from "@/components/logo/logo";
+import { Logo } from "@/components/logo/Logo";
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,15 +22,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={cn("container mx-auto", styles.container)}>
-        <Link href="/" className={styles.logo} onClick={closeMobileMenu}>
-          <div className={styles.logoIcon}>
-            <LogoIcon />
-          </div>
-          <div className={styles.logoText}>
-            <span className={styles.logoTextBold}>Home</span>Vibe
-          </div>
-        </Link>
-
+        <Logo />
         <nav className={cn(styles.nav, isMobileMenuOpen && styles.navOpen)}>
           <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
             Bedroom
