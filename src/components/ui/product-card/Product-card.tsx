@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeartIcon } from "./heart";
+import { Star } from "./star";
 import { Button } from "@/components/ui/";
 import { CartIcon } from "@/components/icons/cart";
 import styles from "./product-card.module.css";
@@ -54,9 +55,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       <Link href="/catalog" className={styles.link}>
         <div className={styles.content}>
-          <span className={styles.category}>
-            {product.category.replace("-", " ")}
-          </span>
+          <div className={styles.contentTop}>
+            <span className={styles.category}>
+              {product.category.replace("-", " ")}
+            </span>
+            <div className={styles.rating}>
+              <Star />
+              <span className={styles.ratingValue}>
+                {product.rating.toFixed(1)}
+              </span>
+            </div>
+          </div>
+
           <h3 className={styles.title}>{product.title}</h3>
 
           <div className={styles.priceGroup}>
@@ -67,6 +77,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         </div>
       </Link>
+
       <Button variant="secondary" className={styles.addButton}>
         <CartIcon />
       </Button>

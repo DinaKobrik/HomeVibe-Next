@@ -1,0 +1,22 @@
+.starIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.starStroke {
+  stroke: var(--primary);
+  transition: stroke 0.3s ease;
+}
+
+.starFill {
+  fill: var(--primary);
+  transition: fill 0.3s ease;
+}
+
+@media (max-width: 576px) {
+  .starIcon {
+    width: 14px;
+    height: 14px;
+  }
+}

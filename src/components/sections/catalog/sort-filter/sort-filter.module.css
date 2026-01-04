@@ -1,0 +1,141 @@
+.sortContainer {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+.sortFilter {
+  position: relative;
+}
+
+.filterLabel {
+  position: absolute;
+  top: 16px;
+  left: 30px;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-black);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.customSelect {
+  position: relative;
+}
+
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  padding: 12px 30px 12px 90px;
+  background-color: var(--bg-white);
+  border: 1px solid var(--green-light);
+  border-radius: var(--border-s);
+  font-size: 16px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: border-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.selectTrigger:hover {
+  border-color: var(--green-dark);
+}
+
+.triggerOpen {
+  border-radius: var(--border-s) var(--border-s) 0 0;
+  border-bottom-color: transparent;
+}
+
+.selectedText {
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow {
+  transform: rotate(90deg);
+  margin-left: 12px;
+  font-size: 18px;
+  color: var(--green-dark);
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(-90deg);
+}
+
+.optionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-white);
+  border: 1px solid var(--green-light);
+  border-top: none;
+  border-radius: 0 0 var(--border-s) var(--border-s);
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  z-index: 10;
+}
+
+.optionsList.visible {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.option {
+  font-family: Montserrat, Inter, sans-serif;
+  width: 100%;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--green-light);
+  text-align: left;
+  font-size: 16px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  opacity: 0.8;
+}
+
+.lastOption {
+  border-bottom: none;
+}
+
+.option:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .filterLabel {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 14px;
+  }
+
+  .selectedText,
+  .option {
+    font-size: 14px;
+  }
+
+  .selectTrigger {
+    padding: 8px 20px 8px 72px;
+    width: 240px;
+  }
+}
+@media (max-width: 576px) {
+  .sortContainer {
+    justify-content: center;
+  }
+}

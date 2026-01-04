@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./product-card.module.css";
+import styles from "./heart.module.css";
 
 export const HeartIcon = () => {
   const [isFilled, setIsFilled] = useState(false);
