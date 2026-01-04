@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import styles from "./header.module.css";
 import Link from "next/link";
 import { MenuIcon } from "./menu";
-import { CartIcon } from "./cart";
+import { CartIcon } from "../../icons/cart";
 import { Logo } from "@/components/logo/Logo";
 
 export const Header: React.FC = () => {

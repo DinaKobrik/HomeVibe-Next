@@ -1,0 +1,201 @@
+.card {
+  position: relative;
+  background: linear-gradient(
+    to top,
+    var(--green-light) 0%,
+    var(--color-white) 40%
+  );
+  border-radius: var(--border-s);
+  overflow: hidden;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--primary);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  z-index: 2;
+}
+
+.content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-grow: 1;
+}
+
+.category {
+  font-size: 13px;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+  color: var(--color-black);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priceGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 8px;
+  height: 50px;
+  margin-top: auto;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.originalPrice {
+  font-size: 16px;
+  color: var(--color-black);
+  opacity: 0.7;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.addButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 16px;
+}
+
+.addButton svg {
+  fill: var(--color-white);
+  width: 30px;
+  height: 30px;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-white);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+}
+
+.favoriteIcon {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-black);
+  stroke-width: 30;
+  transition: all 0.3s ease;
+}
+
+.favoriteIcon.filled {
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+
+.favoriteIcon.filled path {
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+
+@media (max-width: 992px) {
+  .priceGroup {
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    gap: 3px;
+  }
+}
+@media (max-width: 576px) {
+  .content {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .discountBadge {
+    top: 8px;
+    left: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 8px;
+  }
+
+  .favoriteButton {
+    top: 8px;
+    right: 8px;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+  }
+
+  .category {
+    font-size: 11px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .addButton {
+    bottom: 12px;
+    right: 12px;
+    padding: 4px 8px;
+  }
+
+  .addButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .originalPrice {
+    font-size: 12px;
+  }
+}
