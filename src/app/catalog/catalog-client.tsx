@@ -1,8 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ProductCard } from "@/components/ui/";
-import { SortFilter } from "@/components/sections/catalog";
+import {
+  CategoryFilter,
+  PriceFilter,
+  DiscountFilter,
+  SortFilter,
+} from "@/components/sections/catalog";
+import { FiltersIcon } from "./filters";
 import styles from "./catalog-client.module.css";
 
 interface Product {
@@ -24,26 +30,63 @@ interface CatalogClientProps {
 }
 
 export function CatalogClient({ initialProducts }: CatalogClientProps) {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [minPrice, setMinPrice] = useState<string>("");
+  const [maxPrice, setMaxPrice] = useState<string>("");
+  const [hasDiscount, setHasDiscount] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<SortOption>(null);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const getFinalPrice = (product: Product): number => {
-    return product.discountPercentage
-      ? product.price * (1 - product.discountPercentage / 100)
-      : product.price;
-  };
+  const filtersRef = useRef<HTMLDivElement>(null);
 
-  const sortedProducts = [...initialProducts];
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        filtersRef.current &&
+        !filtersRef.current.contains(event.target as Node)
+      ) {
+        setFiltersOpen(false);
+      }
+    };
+
+    if (filtersOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [filtersOpen]);
+
+  const currentPrice = (product: Product): number => product.price;
+
+  let filteredProducts = initialProducts.filter((product) => {
+    if (
+      selectedCategories.length > 0 &&
+      !selectedCategories.includes(product.category)
+    )
+      return false;
+
+    const price = currentPrice(product);
+
+    if (minPrice && price < Number(minPrice)) return false;
+    if (maxPrice && price > Number(maxPrice)) return false;
+
+    if (hasDiscount && !product.discountPercentage) return false;
+
+    return true;
+  });
 
   if (sortBy) {
-    sortedProducts.sort((a, b) => {
-      const aFinalPrice = getFinalPrice(a);
-      const bFinalPrice = getFinalPrice(b);
+    filteredProducts = [...filteredProducts].sort((a, b) => {
+      const aPrice = currentPrice(a);
+      const bPrice = currentPrice(b);
 
       switch (sortBy) {
         case "price-asc":
-          return aFinalPrice - bFinalPrice;
+          return aPrice - bPrice;
         case "price-desc":
-          return bFinalPrice - aFinalPrice;
+          return bPrice - aPrice;
         case "rating":
           return b.rating - a.rating;
         case "discount":
@@ -56,21 +99,56 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
     });
   }
 
-  const productCount = sortedProducts.length;
+  const activeCount = filteredProducts.length;
 
   return (
     <section className={styles.container}>
-      <div></div>
-      <div>
-        <div className={styles.gridSort}>
-          <p className={styles.count}>{productCount} products</p>
-          <SortFilter sortBy={sortBy} setSortBy={setSortBy} />
+      <div className={styles.emptyItem}></div>
+
+      <div className={styles.filtersWrapper}>
+        <button
+          className={styles.mobileFilterToggle}
+          onClick={() => setFiltersOpen(!filtersOpen)}>
+          <FiltersIcon />
+          <span className={styles.filtersText}>Filters</span>
+        </button>
+
+        <div
+          className={`${styles.filters} ${
+            filtersOpen ? styles.filtersOpen : ""
+          }`}
+          ref={filtersRef}>
+          <CategoryFilter
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+          />
+          <PriceFilter
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            setMinPrice={setMinPrice}
+            setMaxPrice={setMaxPrice}
+          />
+          <DiscountFilter
+            hasDiscount={hasDiscount}
+            setHasDiscount={setHasDiscount}
+          />
         </div>
-        <div className={styles.grid}>
-          {sortedProducts.map((product) => (
+      </div>
+
+      <p className={styles.count}>{activeCount} products</p>
+
+      <div className={styles.gridSort}>
+        <SortFilter sortBy={sortBy} setSortBy={setSortBy} />
+      </div>
+
+      <div className={styles.grid}>
+        {filteredProducts.length === 0 ? (
+          <p className={styles.empty}>No products found</p>
+        ) : (
+          filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+          ))
+        )}
       </div>
     </section>
   );

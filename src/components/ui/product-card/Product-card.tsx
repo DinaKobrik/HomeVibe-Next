@@ -23,7 +23,8 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const hasDiscount = !!product.discountPercentage;
+  const hasDiscount =
+    !!product.discountPercentage && product.discountPercentage > 0;
   const discountLabel = hasDiscount
     ? `-${Math.round(product.discountPercentage!)}%`
     : null;
@@ -70,7 +71,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <h3 className={styles.title}>{product.title}</h3>
 
           <div className={styles.priceGroup}>
-            <span className={styles.price}>$ {product.price}</span>
+            <span className={styles.price}>$ {product.price.toFixed(2)}</span>
+
             {originalPrice && (
               <span className={styles.originalPrice}>$ {originalPrice}</span>
             )}
