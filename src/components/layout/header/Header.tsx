@@ -23,21 +23,42 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={cn("container mx-auto", styles.container)}>
         <Logo />
+
         <nav className={cn(styles.nav, isMobileMenuOpen && styles.navOpen)}>
-          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
-            Bedroom
+          <Link
+            href="/catalog?category=furniture"
+            replace
+            className={styles.navLink}
+            onClick={closeMobileMenu}>
+            Furniture
           </Link>
-          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
-            Linving room
-          </Link>
-          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
+
+          <Link
+            href="/catalog?category=kitchen-accessories"
+            replace
+            className={styles.navLink}
+            onClick={closeMobileMenu}>
             Kitchen
           </Link>
-          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
-            Bathroom
+
+          <Link
+            href="/catalog?category=home-decoration"
+            replace
+            className={styles.navLink}
+            onClick={closeMobileMenu}>
+            Decor
           </Link>
-          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
+
+          <Link
+            href="/catalog?sale=true"
+            replace
+            className={styles.navLink}
+            onClick={closeMobileMenu}>
             Sale
+          </Link>
+
+          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
+            About
           </Link>
         </nav>
 

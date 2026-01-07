@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useLayoutEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { ProductCard } from "@/components/ui/";
 import {
   CategoryFilter,
@@ -30,6 +31,8 @@ interface CatalogClientProps {
 }
 
 export function CatalogClient({ initialProducts }: CatalogClientProps) {
+  const searchParams = useSearchParams();
+
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
@@ -37,26 +40,25 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
   const [sortBy, setSortBy] = useState<SortOption>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const filtersRef = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const category = searchParams.get("category");
+    const sale = searchParams.get("sale");
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        filtersRef.current &&
-        !filtersRef.current.contains(event.target as Node)
-      ) {
-        setFiltersOpen(false);
-      }
-    };
+    setSelectedCategories([]);
+    setMinPrice("");
+    setMaxPrice("");
+    setHasDiscount(false);
+    setSortBy(null);
 
-    if (filtersOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+    if (category) {
+      setSelectedCategories([category]);
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [filtersOpen]);
+    if (sale === "true") {
+      setHasDiscount(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   const currentPrice = (product: Product): number => product.price;
 
@@ -68,7 +70,6 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
       return false;
 
     const price = currentPrice(product);
-
     if (minPrice && price < Number(minPrice)) return false;
     if (maxPrice && price > Number(maxPrice)) return false;
 
@@ -116,8 +117,7 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
         <div
           className={`${styles.filters} ${
             filtersOpen ? styles.filtersOpen : ""
-          }`}
-          ref={filtersRef}>
+          }`}>
           <CategoryFilter
             selectedCategories={selectedCategories}
             setSelectedCategories={setSelectedCategories}

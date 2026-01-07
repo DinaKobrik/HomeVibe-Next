@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./category-filter.module.css";
 
 const CATEGORIES = [
@@ -20,6 +21,14 @@ export function CategoryFilter({
   setSelectedCategories,
 }: CategoryFilterProps) {
   const [isOpen, setIsOpen] = useState(true);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get("category");
+    if (categoryFromUrl) {
+      setSelectedCategories([categoryFromUrl]);
+    }
+  }, [searchParams, setSelectedCategories]);
 
   const toggleCategory = (slug: string) => {
     setSelectedCategories((prev: string[]) =>
