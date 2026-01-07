@@ -11,6 +11,7 @@ import {
 } from "@/components/sections/catalog";
 import { FiltersIcon } from "./filters";
 import styles from "./catalog-client.module.css";
+import { Pagination } from "@/components/ui/pagination/pagination";
 
 interface Product {
   id: number;
@@ -40,10 +41,13 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
   const [sortBy, setSortBy] = useState<SortOption>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   useLayoutEffect(() => {
     const category = searchParams.get("category");
     const sale = searchParams.get("sale");
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedCategories([]);
     setMinPrice("");
     setMaxPrice("");
@@ -57,7 +61,6 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
     if (sale === "true") {
       setHasDiscount(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const currentPrice = (product: Product): number => product.price;
@@ -100,7 +103,11 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
     });
   }
 
-  const activeCount = filteredProducts.length;
+  const totalItems = filteredProducts.length;
+  const itemsPerPage = 6;
+
+  const startItem = (currentPage - 1) * itemsPerPage + 1;
+  const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
   return (
     <section className={styles.container}>
@@ -135,20 +142,35 @@ export function CatalogClient({ initialProducts }: CatalogClientProps) {
         </div>
       </div>
 
-      <p className={styles.count}>{activeCount} products</p>
+      <p className={styles.count}>
+        {totalItems === 0
+          ? "No products found"
+          : `${startItem}–${endItem} of ${totalItems} products`}
+      </p>
 
       <div className={styles.gridSort}>
         <SortFilter sortBy={sortBy} setSortBy={setSortBy} />
       </div>
 
       <div className={styles.grid}>
-        {filteredProducts.length === 0 ? (
-          <p className={styles.empty}>No products found</p>
-        ) : (
-          filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))
-        )}
+        <Pagination
+          className={styles.pagination}
+          items={filteredProducts}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          renderItems={(currentItems) => (
+            <>
+              {currentItems.length === 0 ? (
+                <p className={styles.empty}>No products found</p>
+              ) : (
+                currentItems.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+              )}
+            </>
+          )}
+        />
       </div>
     </section>
   );

@@ -60,6 +60,11 @@
   padding: 40px 0;
 }
 
+.pagination {
+  margin-top: 40px;
+  grid-column: -1 / 1;
+}
+
 @media (max-width: 1200px) {
   .container {
     gap: 30px;
@@ -148,5 +153,9 @@
 
   .grid {
     gap: 16px;
+  }
+
+  .pagination {
+    margin-top: 20px;
   }
 }
