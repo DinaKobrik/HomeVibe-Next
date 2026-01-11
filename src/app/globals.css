@@ -6,9 +6,11 @@
   --color-black: #3d3d3d;
   --green-light: #dce1cd;
   --green-dark: #6b705c;
+  --green-primary: #49a926;
   --color-border: #cecece;
   --border-s: 16px;
   --border-l: 48px;
+  --box-shadow-m: 0 4px 5px rgba(0, 0, 0, 0.3);
 }
 @media (max-width: 992px) {
   :root {
@@ -34,6 +36,10 @@ main {
   padding: 0 40px;
 }
 body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
   color: var(--color-black);
   background: var(--bg-white);
   font-family: Montserrat, Inter, sans-serif;

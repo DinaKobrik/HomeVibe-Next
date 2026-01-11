@@ -12,18 +12,7 @@ import {
 import { FiltersIcon } from "./filters";
 import styles from "./catalog-client.module.css";
 import { Pagination } from "@/components/ui/pagination/pagination";
-
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage?: number;
-  rating: number;
-  reviews: { rating: number }[];
-  thumbnail: string;
-  category: string;
-}
+import { Product } from "@/types/product";
 
 type SortOption = "price-asc" | "price-desc" | "rating" | "discount" | null;
 

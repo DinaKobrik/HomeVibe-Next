@@ -5,18 +5,7 @@ import { Star } from "./star";
 import { Button } from "@/components/ui/";
 import { CartIcon } from "@/components/icons/cart";
 import styles from "./product-card.module.css";
-
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage?: number;
-  rating: number;
-  reviews: { rating: number }[];
-  thumbnail: string;
-  category: string;
-}
+import { Product } from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
@@ -35,26 +24,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <Image
-          src={product.thumbnail}
-          alt={product.title}
-          fill
-          className={styles.image}
-          unoptimized
-          priority={product.id <= 10}
-        />
+      <Link href={`/product/${product.id}`} className={styles.link}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={product.thumbnail}
+            alt={product.title}
+            fill
+            className={styles.image}
+            unoptimized
+            priority={product.id <= 10}
+          />
 
-        {hasDiscount && (
-          <div className={styles.discountBadge}>{discountLabel}</div>
-        )}
+          {hasDiscount && (
+            <div className={styles.discountBadge}>{discountLabel}</div>
+          )}
 
-        <div className={styles.favoriteWrapper}>
-          <HeartIcon />
+          <div className={styles.favoriteWrapper}>
+            <HeartIcon />
+          </div>
         </div>
-      </div>
 
-      <Link href="/catalog" className={styles.link}>
         <div className={styles.content}>
           <div className={styles.contentTop}>
             <span className={styles.category}>
