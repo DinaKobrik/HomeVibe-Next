@@ -10,7 +10,7 @@ export const PromoBanner: React.FC = () => {
     <section className={styles.section}>
       <Image
         src={backgroundImage}
-        alt="Промо фон"
+        alt="New furniture arrivals on sale"
         fill
         priority
         className={styles.bgImage}
@@ -20,13 +20,13 @@ export const PromoBanner: React.FC = () => {
         <div className={styles.overlay}>
           <Badge color="white">NEW ARRIVALS</Badge>
           <Heading level="h2" color="white">
-            Everything you need for your living room
+            New furniture arrivals on sale
           </Heading>
           <Button
-            href="/catalog/living-room"
+            href="/catalog?category=furniture"
             variant="primary"
             className={styles.btn}>
-            PURCHASE
+            EXPLORE
           </Button>
         </div>
       </div>

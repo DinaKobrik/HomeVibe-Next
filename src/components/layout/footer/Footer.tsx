@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
         </div>
         <Image
           src="/images/sofa.png"
-          alt=""
+          alt="Sofa"
           width={320}
           height={180}
           className={styles.decoration}

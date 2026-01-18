@@ -5,28 +5,28 @@ import styles from "./partners.module.css";
 
 const partnersLogos = [
   {
-    src: "/images/partners/mia.png",
-    alt: "Harmony Home",
+    src: "/images/partners/ph.png",
+    alt: "PH",
   },
   {
     src: "/images/partners/mia.png",
-    alt: "Harmony Home",
+    alt: "MiaStudio",
   },
   {
-    src: "/images/partners/mia.png",
-    alt: "Harmony Home",
+    src: "/images/partners/comfortsk.png",
+    alt: "Comfortsk",
   },
   {
-    src: "/images/partners/mia.png",
-    alt: "Harmony Home",
+    src: "/images/partners/frame.png",
+    alt: "FrameVibe",
   },
   {
-    src: "/images/partners/mia.png",
-    alt: "Harmony Home",
+    src: "/images/partners/nest.png",
+    alt: "NestForm",
   },
   {
-    src: "/images/partners/mia.png",
-    alt: "Harmony Home",
+    src: "/images/partners/loom.png",
+    alt: "LoomSpace",
   },
 ];
 

@@ -9,20 +9,22 @@ export const HeroBanner: React.FC = () => {
     <section className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <Badge>NEW COLLECTION</Badge>
-          <Heading level="h1">The Beauty Of Design</Heading>
+          <Badge>FRESH ARRIVAL</Badge>
+          <Heading level="h1">Beauty In Simplicity</Heading>
           <P className={styles.description}>
-            Both functional and decorative, which feels artisan-made but has a
-            contemporary look.
+            Blends everyday usefulness with refined style — timeless,
+            handcrafted vibe.
           </P>
           <div className={styles.button}>
-            <Button variant="primary">EXPLORE</Button>
+            <Button href="/catalog" variant="primary">
+              BROWSE
+            </Button>
           </div>
         </div>
         <div className={styles.imageWrapper}>
           <Image
-            src="/hero-banner.jpg"
-            alt="Стильный интерьер с современной мебелью"
+            src="/images/hero-banner.jpg"
+            alt="Stylish interior with modern furniture"
             fill
             className={styles.image}
             priority
