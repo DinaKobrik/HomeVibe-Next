@@ -17,11 +17,18 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    unoptimized: true,
   },
   logging: {
     fetches: {
       fullUrl: true,
     },
+  },
+  output: "export",
+  trailingSlash: true,
+  experimental: {
+    serverComponentsExternalPackages: ["next/navigation"],
+    optimizeCss: false,
   },
 };
 

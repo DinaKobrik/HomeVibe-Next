@@ -1,10 +1,21 @@
 import ProductDetail from "@/components/sections/product/product-detail/product-detail";
-import { getProductById } from "@/lib/data/products";
+import { getProductById, getAllProducts } from "@/lib/data/products";
 import styles from "./product.module.css";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
+export async function generateStaticParams() {
+  try {
+    const products = await getAllProducts();
+    const validProducts = products.filter(
+      (p) => p.id && p.thumbnail && p.title
+    );
+    return validProducts.map((product) => ({
+      id: product.id.toString(),
+    }));
+  } catch (error) {
+    console.error("generateStaticParams error:", error);
+    return [];
+  }
+}
 interface ProductPageProps {
   params: Promise<{ id: string }>;
 }
