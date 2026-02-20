@@ -25,19 +25,18 @@ export const Footer: React.FC = () => {
             <h3 className={styles.subtitle}>Home Decor Products</h3>
             <ul className={styles.list}>
               <li>
-                <Link href="/catalog/sofas">Sofas & Sectionals</Link>
+                <Link href="/catalog?category=furniture">Furniture</Link>
               </li>
               <li>
-                <Link href="/catalog/chairs">Chairs & Armchairs</Link>
+                <Link href="/catalog?category=kitchen-accessories">
+                  Kitchen
+                </Link>
               </li>
               <li>
-                <Link href="/catalog/tables">Coffee Tables</Link>
+                <Link href="/catalog?category=home-decoration">Decor</Link>
               </li>
               <li>
-                <Link href="/catalog/lighting">Lighting</Link>
-              </li>
-              <li>
-                <Link href="/catalog/decor">Decor & Accessories</Link>
+                <Link href="/catalog?sale=true">Sale</Link>
               </li>
             </ul>
           </div>
@@ -46,16 +45,16 @@ export const Footer: React.FC = () => {
             <h3 className={styles.subtitle}>Quick Access Menu</h3>
             <ul className={styles.list}>
               <li>
-                <Link href="/">About Us</Link>
+                <Link href="/about">About Us</Link>
               </li>
               <li>
                 <Link href="/">Our Services</Link>
               </li>
               <li>
-                <Link href="/warranty">FAQ</Link>
+                <Link href="/">FAQ</Link>
               </li>
               <li>
-                <Link href="/contact">Terms & Conditions</Link>
+                <Link href="/">Terms & Conditions</Link>
               </li>
             </ul>
           </div>

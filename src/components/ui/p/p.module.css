@@ -2,8 +2,16 @@
   margin: 0;
   font-size: 19px;
   line-height: 1.5;
+}
+
+.white {
+  color: var(--color-white);
+}
+
+.black {
   color: var(--color-black);
 }
+
 @media (max-width: 576px) {
   .text {
     font-size: 14px;

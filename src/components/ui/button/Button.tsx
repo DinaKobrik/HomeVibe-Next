@@ -6,17 +6,20 @@ import styles from "./button.module.css";
 export type ButtonVariant = "primary" | "secondary" | "outlined";
 export type ButtonAs = "button" | "link";
 
-export interface ButtonProps
-  extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+export interface ButtonProps extends React.HTMLAttributes<
+  HTMLButtonElement | HTMLAnchorElement
+> {
   variant?: ButtonVariant;
   disabled?: boolean;
   href?: string;
+  scroll?: boolean;
   children: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   href,
+  scroll,
   children,
   className,
   disabled,
@@ -30,12 +33,12 @@ export const Button: React.FC<ButtonProps> = ({
       [styles.outlined]: variant === "outlined",
     },
     disabled && styles.disabled,
-    className
+    className,
   );
 
   if (href) {
     return (
-      <Link href={href} className={classNames} {...rest}>
+      <Link href={href} scroll={scroll} className={classNames} {...rest}>
         {children}
       </Link>
     );

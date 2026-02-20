@@ -57,7 +57,10 @@ export const Header: React.FC = () => {
             Sale
           </Link>
 
-          <Link href="/" className={styles.navLink} onClick={closeMobileMenu}>
+          <Link
+            href="/about"
+            className={styles.navLink}
+            onClick={closeMobileMenu}>
             About
           </Link>
         </nav>
