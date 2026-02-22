@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import styles from "./product-detail.module.css";
 import { Product } from "@/types/product";
-import { ProductInfo } from "../info/product-info";
+import ProductInfo from "../info/ProductInfo";
 
 interface ProductDetailProps {
   product: Product;
@@ -12,7 +12,7 @@ interface ProductDetailProps {
 
 export default function ProductDetail({ product }: ProductDetailProps) {
   const [selectedImage, setSelectedImage] = useState(
-    product.images.length > 0 ? product.images[0] : ""
+    product.images.length > 0 ? product.images[0] : "",
   );
 
   const thumbnails = product.images;

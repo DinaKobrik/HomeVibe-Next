@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { CatalogClient } from "./catalog-client";
+import CatalogClient from "../../components/sections/catalog/catalog-client/CatalogClient";
 import { getAllProducts } from "@/lib/data/products";
 
 export default async function CatalogPage() {

@@ -14,7 +14,7 @@ interface PaginationProps<T> {
   className?: string;
 }
 
-export function Pagination<T>({
+export default function Pagination<T>({
   items,
   itemsPerPage,
   currentPage,
@@ -101,7 +101,7 @@ export function Pagination<T>({
               }`}>
               {page}
             </button>
-          )
+          ),
         )}
 
         <button

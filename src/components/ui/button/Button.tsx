@@ -16,7 +16,7 @@ export interface ButtonProps extends React.HTMLAttributes<
   children: React.ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export default function Button({
   variant = "primary",
   href,
   scroll,
@@ -24,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   disabled,
   ...rest
-}) => {
+}: ButtonProps) {
   const classNames = cn(
     styles.btn,
     {
@@ -49,4 +49,4 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
-};
+}

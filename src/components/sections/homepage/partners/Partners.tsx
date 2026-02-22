@@ -30,7 +30,7 @@ const partnersLogos = [
   },
 ];
 
-export const Partners: React.FC = () => {
+export default function Partners() {
   return (
     <section>
       <div className={styles.grid}>
@@ -49,4 +49,4 @@ export const Partners: React.FC = () => {
       </div>
     </section>
   );
-};
+}

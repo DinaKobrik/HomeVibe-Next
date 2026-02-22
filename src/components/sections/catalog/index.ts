@@ -1,4 +1,4 @@
-export * from "./sort-filter/sort-filter";
-export * from "./category-filter/category-filter";
-export * from "./price-filter/price-filter";
-export * from "./discount-filter/discount-filter";
+export { default as SortFilter } from "./sort-filter/SortFilter";
+export { default as CategoryFilter } from "./category-filter/CategoryFilter";
+export { default as PriceFilter } from "./price-filter/PriceFilter";
+export { default as DiscountFilter } from "./discount-filter/DiscountFilter";

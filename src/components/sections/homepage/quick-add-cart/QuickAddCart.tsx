@@ -8,7 +8,7 @@ import { getAllProducts } from "@/lib/data/products";
 import { Product } from "@/types/product";
 import Link from "next/link";
 
-export const QuickAddCart: React.FC = () => {
+export default function QuickAddCart() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -76,4 +76,4 @@ export const QuickAddCart: React.FC = () => {
       </div>
     </section>
   );
-};
+}

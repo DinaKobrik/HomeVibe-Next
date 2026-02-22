@@ -10,7 +10,7 @@ interface PriceFilterProps {
   setMaxPrice: (value: string) => void;
 }
 
-export function PriceFilter({
+export default function PriceFilter({
   minPrice,
   maxPrice,
   setMinPrice,

@@ -23,7 +23,7 @@ const advantagesData = [
   },
 ];
 
-export const Advantages: React.FC = () => {
+export default function Advantages() {
   return (
     <section className={styles.section}>
       <div className={styles.grid}>
@@ -39,4 +39,4 @@ export const Advantages: React.FC = () => {
       </div>
     </section>
   );
-};
+}

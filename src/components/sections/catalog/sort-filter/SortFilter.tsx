@@ -18,7 +18,7 @@ const SORT_OPTIONS = [
   { value: "discount", label: "discount" },
 ] as const;
 
-export function SortFilter({ sortBy, setSortBy }: SortFilterProps) {
+export default function SortFilter({ sortBy, setSortBy }: SortFilterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 

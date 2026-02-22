@@ -5,7 +5,7 @@ import styles from "./promo-banner.module.css";
 
 const backgroundImage = "/images/hero-banner.jpg";
 
-export const PromoBanner: React.FC = () => {
+export default function PromoBanner() {
   return (
     <section className={styles.section}>
       <Image
@@ -32,4 +32,4 @@ export const PromoBanner: React.FC = () => {
       </div>
     </section>
   );
-};
+}

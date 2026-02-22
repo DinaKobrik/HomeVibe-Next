@@ -11,18 +11,18 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
 }
 
-export const Heading: React.FC<HeadingProps> = ({
+export default function Heading({
   level = "h3",
   color = "black",
   children,
   className,
   ...rest
-}) => {
+}: HeadingProps) {
   const classNames = cn(
     styles.base,
     styles[level],
     color === "white" ? styles.white : styles.black,
-    className
+    className,
   );
 
   if (level === "h1") {
@@ -46,4 +46,4 @@ export const Heading: React.FC<HeadingProps> = ({
       {children}
     </h3>
   );
-};
+}

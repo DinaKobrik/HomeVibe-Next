@@ -1,5 +1,5 @@
-export * from "./button/Button";
-export * from "./heading/Heading";
-export * from "./p/P";
-export * from "./badge/Badge";
-export * from "./product-card/Product-card";
+export { default as Button } from "./button/Button";
+export { default as Heading } from "./heading/Heading";
+export { default as P } from "./p/P";
+export { default as Badge } from "./badge/Badge";
+export { default as ProductCard } from "./product-card/ProductCard";

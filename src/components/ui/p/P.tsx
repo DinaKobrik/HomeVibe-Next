@@ -7,12 +7,7 @@ export interface PProps extends React.HTMLAttributes<HTMLParagraphElement> {
   color?: string;
 }
 
-export const P: React.FC<PProps> = ({
-  children,
-  color,
-  className,
-  ...rest
-}) => {
+export default function P({ children, color, className, ...rest }: PProps) {
   return (
     <p
       className={cn(
@@ -24,4 +19,4 @@ export const P: React.FC<PProps> = ({
       {children}
     </p>
   );
-};
+}

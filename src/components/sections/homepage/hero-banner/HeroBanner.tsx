@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Heading, P, Button, Badge } from "@/components/ui/";
 import styles from "./hero-banner.module.css";
 
-export const HeroBanner: React.FC = () => {
+export default function HeroBanner() {
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -33,4 +33,4 @@ export const HeroBanner: React.FC = () => {
       </div>
     </section>
   );
-};
+}

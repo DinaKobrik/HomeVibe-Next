@@ -16,7 +16,7 @@ interface CategoryFilterProps {
   setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export function CategoryFilter({
+export default function CategoryFilter({
   selectedCategories,
   setSelectedCategories,
 }: CategoryFilterProps) {
@@ -32,7 +32,7 @@ export function CategoryFilter({
 
   const toggleCategory = (slug: string) => {
     setSelectedCategories((prev: string[]) =>
-      prev.includes(slug) ? prev.filter((c) => c !== slug) : [...prev, slug]
+      prev.includes(slug) ? prev.filter((c) => c !== slug) : [...prev, slug],
     );
   };
 

@@ -9,21 +9,21 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
 }
 
-export const Badge: React.FC<BadgeProps> = ({
+export default function Badge({
   color = "black",
   children,
   className,
   ...rest
-}) => {
+}: BadgeProps) {
   return (
     <span
       className={cn(
         styles.badge,
         color === "white" ? styles.white : styles.black,
-        className
+        className,
       )}
       {...rest}>
       {children}
     </span>
   );
-};
+}

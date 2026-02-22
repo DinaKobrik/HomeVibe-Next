@@ -9,7 +9,7 @@ interface DiscountFilterProps {
   setHasDiscount: (value: boolean) => void;
 }
 
-export function DiscountFilter({
+export default function DiscountFilter({
   hasDiscount,
   setHasDiscount,
 }: DiscountFilterProps) {

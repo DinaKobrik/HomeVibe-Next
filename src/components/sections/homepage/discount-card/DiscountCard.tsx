@@ -11,13 +11,13 @@ export interface DiscountCardProps {
   alt: string;
 }
 
-export const DiscountCard: React.FC<DiscountCardProps> = ({
+export default function DiscountCard({
   title,
   badge,
   buttonUrl,
   imageUrl,
   alt,
-}) => {
+}: DiscountCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.content}>
@@ -34,4 +34,4 @@ export const DiscountCard: React.FC<DiscountCardProps> = ({
       </div>
     </div>
   );
-};
+}

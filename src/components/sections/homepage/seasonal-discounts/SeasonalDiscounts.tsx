@@ -1,5 +1,5 @@
 import React from "react";
-import { DiscountCard } from "./DiscountCard";
+import DiscountCard from "../discount-card/DiscountCard";
 import styles from "./seasonal-discounts.module.css";
 
 const cardsData = [
@@ -26,7 +26,7 @@ const cardsData = [
   },
 ];
 
-export const SeasonalDiscounts: React.FC = () => {
+export default function SeasonalDiscounts() {
   return (
     <section className={styles.section}>
       <h3 className={styles.title}>
@@ -39,4 +39,4 @@ export const SeasonalDiscounts: React.FC = () => {
       </div>
     </section>
   );
-};
+}

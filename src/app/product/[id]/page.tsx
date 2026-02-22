@@ -1,4 +1,4 @@
-import ProductDetail from "@/components/sections/product/product-detail/product-detail";
+import ProductDetail from "@/components/sections/product/product-detail/ProductDetail";
 import { getProductById, getAllProducts } from "@/lib/data/products";
 import styles from "./product.module.css";
 
@@ -6,7 +6,7 @@ export async function generateStaticParams() {
   try {
     const products = await getAllProducts();
     const validProducts = products.filter(
-      (p) => p.id && p.thumbnail && p.title
+      (p) => p.id && p.thumbnail && p.title,
     );
     return validProducts.map((product) => ({
       id: product.id.toString(),

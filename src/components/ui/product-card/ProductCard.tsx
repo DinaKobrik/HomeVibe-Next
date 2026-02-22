@@ -11,7 +11,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export default function ProductCard({ product }: ProductCardProps) {
   const hasDiscount =
     !!product.discountPercentage && product.discountPercentage > 0;
   const discountLabel = hasDiscount
@@ -74,4 +74,4 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </Button>
     </div>
   );
-};
+}

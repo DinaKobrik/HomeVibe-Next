@@ -14,7 +14,7 @@ interface ProductInfoProps {
   product: Product;
 }
 
-export function ProductInfo({ product }: ProductInfoProps) {
+export default function ProductInfo({ product }: ProductInfoProps) {
   const hasDiscount =
     !!product.discountPercentage && product.discountPercentage > 0;
   const discountLabel = hasDiscount

@@ -11,7 +11,7 @@ import {
 } from "@/components/sections/catalog";
 import { FiltersIcon } from "./filters";
 import styles from "./catalog-client.module.css";
-import { Pagination } from "@/components/ui/pagination/pagination";
+import Pagination from "@/components/ui/pagination/pagination";
 import { Product } from "@/types/product";
 
 type SortOption = "price-asc" | "price-desc" | "rating" | "discount" | null;
@@ -20,7 +20,7 @@ interface CatalogClientProps {
   initialProducts: Product[];
 }
 
-export function CatalogClient({ initialProducts }: CatalogClientProps) {
+export default function CatalogClient({ initialProducts }: CatalogClientProps) {
   const searchParams = useSearchParams();
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
