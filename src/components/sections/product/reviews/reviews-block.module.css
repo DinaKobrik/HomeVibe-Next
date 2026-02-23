@@ -1,0 +1,124 @@
+.reviewsSection {
+  background: var(--green-light);
+  border-radius: var(--border-l);
+  padding: 40px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.reviewsCount {
+  font-size: 1rem;
+  color: var(--green-dark);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.reviewsCount:hover {
+  color: var(--primary-dark);
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.reviewCard {
+  background: var(--bg-white);
+  border-radius: var(--border-s);
+  padding: 24px;
+  box-shadow: var(--box-shadow-m);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.reviewerInfo {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 4px 12px;
+  align-items: center;
+}
+
+.reviewerAvatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.avatarInitials {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.reviewerName {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--primary);
+  font-size: 1.25rem;
+}
+
+.starFilled {
+  color: var(--primary);
+}
+.starHalf {
+  color: var(--primary);
+  opacity: 0.6;
+}
+.starEmpty {
+  color: var(--color-border);
+}
+
+.ratingValue {
+  font-size: 1rem;
+  margin-left: 8px;
+  color: var(--color-gray-dark);
+}
+
+.reviewDate {
+  font-size: 0.875rem;
+  color: var(--green-dark);
+}
+
+@media (max-width: 768px) {
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+@media (max-width: 576px) {
+  .reviewsSection {
+    padding: 20px;
+  }
+  .titleWrapper {
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 20px;
+  }
+  .reviewerInfo {
+    grid-template-columns: auto 1fr;
+  }
+  .reviewerInfo > :nth-child(3) {
+    grid-column: span 2;
+  }
+}

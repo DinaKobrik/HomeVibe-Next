@@ -39,6 +39,11 @@
 .reviewsCount {
   color: var(--green-dark);
   font-size: 16px;
+  transition: color 0.2s;
+}
+
+.reviewsCount:hover {
+  color: var(--color-black);
 }
 
 .priceBlock {

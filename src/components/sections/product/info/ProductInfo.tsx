@@ -58,9 +58,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           })}
         </div>
         <span className={styles.rating}>{averageRating.toFixed(1)}</span>
-        <span className={styles.reviewsCount}>
+        <a href="#productReview" className={styles.reviewsCount}>
           ({reviewsCount} {reviewsCount === 1 ? "review" : "reviews"})
-        </span>
+        </a>
       </div>
 
       <Heading level="h2" className={styles.title}>

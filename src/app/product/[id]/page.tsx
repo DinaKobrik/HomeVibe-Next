@@ -1,4 +1,4 @@
-import ProductDetail from "@/components/sections/product/product-detail/ProductDetail";
+import { ProductDetail, ReviewsBlock } from "@/components/sections/product";
 import { getProductById, getAllProducts } from "@/lib/data/products";
 import styles from "./product.module.css";
 
@@ -30,5 +30,10 @@ export default async function ProductPage(props: ProductPageProps) {
     return <div className={styles.notFound}>Product not found</div>;
   }
 
-  return <ProductDetail product={product} />;
+  return (
+    <>
+      <ProductDetail product={product} />
+      <ReviewsBlock reviews={product.reviews} />
+    </>
+  );
 }
