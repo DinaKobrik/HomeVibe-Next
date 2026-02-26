@@ -1,0 +1,12 @@
+.cartContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 1200px) {
+  .cartContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

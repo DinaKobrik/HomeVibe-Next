@@ -66,10 +66,10 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className={styles.rightActions}>
-          <button className={styles.cartButton} aria-label="Корзина">
+          <Link href="/cart" className={styles.cartButton}>
             <CartIcon />
             <span className={styles.cartBadge}>3</span>
-          </button>
+          </Link>
 
           <button
             className={styles.menuButton}
