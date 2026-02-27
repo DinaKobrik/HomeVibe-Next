@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./header.module.css";
 import Link from "next/link";
@@ -10,14 +10,54 @@ import { Logo } from "@/components/logo/Logo";
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((prev) => !prev);
+  const getCartCount = (): number => {
+    const saved = localStorage.getItem("cart");
+    if (!saved) return 0;
+
+    try {
+      const cart: unknown = JSON.parse(saved);
+      if (!Array.isArray(cart)) return 0;
+
+      return cart.reduce<number>((sum, item) => {
+        if (
+          item &&
+          typeof item === "object" &&
+          "quantity" in item &&
+          typeof item.quantity === "number"
+        ) {
+          return sum + item.quantity;
+        }
+        return sum;
+      }, 0);
+    } catch {
+      return 0;
+    }
   };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  useEffect(() => {
+    const updateCount = () => setCartCount(getCartCount());
+
+    updateCount();
+
+    window.addEventListener("storage", (e) => {
+      if (e.key === "cart") updateCount();
+    });
+
+    window.addEventListener("cartUpdated", updateCount);
+
+    window.addEventListener("focus", updateCount);
+
+    return () => {
+      window.removeEventListener("storage", updateCount);
+      window.removeEventListener("cartUpdated", updateCount);
+      window.removeEventListener("focus", updateCount);
+    };
+  }, []);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header className={styles.header}>
@@ -68,7 +108,9 @@ export const Header: React.FC = () => {
         <div className={styles.rightActions}>
           <Link href="/cart" className={styles.cartButton}>
             <CartIcon />
-            <span className={styles.cartBadge}>3</span>
+            {cartCount > 0 && (
+              <span className={styles.cartBadge}>{cartCount}</span>
+            )}
           </Link>
 
           <button

@@ -40,8 +40,10 @@
   fill: var(--color-white);
 }
 
-.cartButton:hover svg {
-  fill: var(--primary);
+@media (hover: hover) and (pointer: fine) {
+  .cartButton:hover svg {
+    fill: var(--primary);
+  }
 }
 
 .cartBadge {
@@ -88,8 +90,10 @@
   transition: color 0.2s ease;
 }
 
-.navLink:hover {
-  color: var(--primary);
+@media (hover: hover) and (pointer: fine) {
+  .navLink:hover {
+    color: var(--primary);
+  }
 }
 
 @media (max-width: 1200px) {
@@ -127,7 +131,10 @@
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s;
     z-index: 40;
     border-radius: 0 0 var(--border-l) var(--border-l);
   }

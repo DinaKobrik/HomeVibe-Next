@@ -98,7 +98,7 @@ export default function CartClient() {
       );
 
       localStorage.setItem("cart", JSON.stringify(updated));
-
+      window.dispatchEvent(new Event("cartUpdated"));
       return updated;
     });
 
@@ -115,7 +115,7 @@ export default function CartClient() {
       const updated = prev.filter((item) => item.id !== id);
 
       localStorage.setItem("cart", JSON.stringify(updated));
-
+      window.dispatchEvent(new Event("cartUpdated"));
       return updated;
     });
 
