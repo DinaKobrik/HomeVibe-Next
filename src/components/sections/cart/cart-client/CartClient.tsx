@@ -6,6 +6,7 @@ import { getProductById } from "@/lib/data/products";
 
 import { CartSummary, CartItems } from "@/components/sections/cart";
 import styles from "./cart-client.module.css";
+import Pagination from "@/components/ui/pagination/pagination";
 
 export default function CartClient() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -13,6 +14,9 @@ export default function CartClient() {
     {},
   );
   const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
 
   useEffect(() => {
     const saved = localStorage.getItem("cart");
@@ -140,10 +144,16 @@ export default function CartClient() {
     [cartItems, productsMap],
   );
 
+  const totalPages = Math.ceil(cartItems.length / itemsPerPage);
+  const currentItems = cartItems.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <div className={styles.cartContent}>
       <CartItems
-        cartItems={cartItems}
+        cartItems={currentItems}
         productsMap={productsMap}
         loading={loading}
         updateQuantity={updateQuantity}
@@ -151,6 +161,27 @@ export default function CartClient() {
       />
 
       <CartSummary itemCount={itemCount} subtotal={subtotal} />
+
+      {totalPages > 1 && (
+        <div className={styles.paginationWrapper}>
+          <Pagination
+            className={styles.pagination}
+            items={cartItems}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+            renderItems={(currentItems) => (
+              <>
+                {currentItems.length === 0 ? (
+                  <p className={styles.empty}>No items in cart</p>
+                ) : (
+                  currentItems.map((item) => <div key={item.id}></div>)
+                )}
+              </>
+            )}
+          />
+        </div>
+      )}
     </div>
   );
 }
