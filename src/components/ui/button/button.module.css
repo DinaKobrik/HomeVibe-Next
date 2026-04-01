@@ -19,7 +19,7 @@
 }
 
 .secondary {
-  background-color: #7c7e6b;
+  background-color: var(--green-secondary);
   color: var(--color-white);
 }
 
@@ -92,7 +92,9 @@
   );
   transform: skewX(-25deg);
   opacity: 0;
-  transition: left 0.6s ease, opacity 0.3s ease;
+  transition:
+    left 0.6s ease,
+    opacity 0.3s ease;
   pointer-events: none;
 }
 
