@@ -79,7 +79,9 @@ export default function FAQ() {
       <div className={styles.faqContainer}>
         {Object.entries(faqData).map(([category, questions]) => (
           <div key={category} className={styles.category}>
-            <h3 className={styles.categoryTitle}>{category}</h3>
+            <Heading level="h3" className={styles.categoryTitle}>
+              {category}
+            </Heading>
 
             <div className={styles.questions}>
               {questions.map((item, index) => {
