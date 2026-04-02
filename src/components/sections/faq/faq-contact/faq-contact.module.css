@@ -1,0 +1,138 @@
+.contactSection {
+  padding: 80px 0;
+  background: var(--green-light);
+  border-radius: var(--border-l);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 12px;
+  color: var(--color-black);
+}
+
+.subtitle {
+  max-width: 580px;
+  margin: 0 auto 50px;
+  color: var(--color-gray-dark);
+  font-size: 1.1rem;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contactGrid > :nth-child(3) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: calc((100% - 24px) / 2);
+  width: 100%;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-white);
+  padding: 32px 24px;
+  border-radius: var(--border-s);
+  box-shadow: var(--box-shadow-s);
+  transition: transform 0.3s ease;
+}
+
+.contactItem:hover {
+  transform: translateY(-6px);
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.iconWrapper svg {
+  fill: var(--color-white);
+  width: 36px;
+  height: 36px;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  margin-bottom: 12px;
+}
+
+.value,
+.schedule {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-black);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.schedule {
+  grid-column: span 2;
+}
+
+.value:hover {
+  color: var(--primary);
+}
+
+.value a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 40px 0;
+  }
+
+  .contactGrid {
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contactItem {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contactGrid {
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .contactGrid > :nth-child(3) {
+    grid-column: auto;
+    justify-self: auto;
+    max-width: none;
+  }
+  .iconWrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .iconWrapper svg {
+    fill: var(--color-white);
+    width: 24px;
+    height: 24px;
+  }
+}
