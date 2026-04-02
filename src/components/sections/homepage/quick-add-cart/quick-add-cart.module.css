@@ -78,6 +78,30 @@
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  z-index: 10;
+}
+
+.quantityControls {
+  padding: 8px 16px;
+  display: flex;
+  gap: 12px;
+  background: var(--green-secondary);
+  border-radius: 50px;
+}
+
+.qtyBtn {
+  font-size: 16px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--color-white);
+}
+
+.qtyDisplay {
+  font-size: 16px;
+  min-width: 16px;
+  text-align: center;
+  color: var(--color-white);
 }
 
 .price {
@@ -96,7 +120,6 @@
 
 .layoutLeft {
   grid-template-areas: "image content";
-
   grid-template-columns: 1fr 1.5fr;
 }
 

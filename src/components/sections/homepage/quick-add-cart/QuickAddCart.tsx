@@ -2,14 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Heading, Button, P } from "@/components/ui/";
+import Link from "next/link";
+import { Heading, P } from "@/components/ui/";
+import { Button } from "@/components/ui/";
 import styles from "./quick-add-cart.module.css";
 import { getAllProducts } from "@/lib/data/products";
 import { Product } from "@/types/product";
-import Link from "next/link";
+import { useCart } from "@/hooks/useCart";
+import { CartIcon } from "@/components/icons/cart";
 
 export default function QuickAddCart() {
   const [products, setProducts] = useState<Product[]>([]);
+  const { getQuantity, increment, decrement, addToCart } = useCart();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,6 +35,8 @@ export default function QuickAddCart() {
       <div className={styles.grid}>
         {products.map((product, index) => {
           const layout = layouts[index % layouts.length];
+          const quantity = getQuantity(product.id);
+          const isInCart = quantity > 0;
 
           return (
             <div
@@ -59,9 +65,30 @@ export default function QuickAddCart() {
                   </div>
 
                   <div className={styles.bottom}>
-                    <Button href="/" variant="primary">
-                      Add
-                    </Button>
+                    {isInCart ? (
+                      <div className={styles.quantityControls}>
+                        <button
+                          onClick={() => decrement(product.id)}
+                          className={styles.qtyBtn}>
+                          −
+                        </button>
+                        <span className={styles.qtyDisplay}>{quantity}</span>
+                        <button
+                          onClick={() => increment(product.id)}
+                          className={styles.qtyBtn}>
+                          +
+                        </button>
+                      </div>
+                    ) : (
+                      <Button
+                        variant="primary"
+                        onClick={() => addToCart(product.id)}
+                        className={styles.addButton}>
+                        <CartIcon />
+                        Add
+                      </Button>
+                    )}
+
                     <div className={styles.priceGroup}>
                       <span className={styles.price}>
                         $ {product.price.toFixed(2)}
